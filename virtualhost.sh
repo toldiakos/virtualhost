@@ -34,15 +34,15 @@ do
 done
 
 if [ "$rootDir" == "" ]; then
-	rootDir=${domain//./}
+	rootDir=$domain
 fi
 
 ### if root dir starts with '/', don't use /var/www as default starting point
 if [[ "$rootDir" =~ ^/ ]]; then
 	userDir=''
 fi
-
-rootDir=$userDir$rootDir
+dir1=$userDir$rootDir
+rootDir=$dir1/public_html
 
 if [ "$action" == 'create' ]
 	then
@@ -55,6 +55,7 @@ if [ "$action" == 'create' ]
 		### check if directory exists or not
 		if ! [ -d $rootDir ]; then
 			### create the directory
+			mkdir $dir1
 			mkdir $rootDir
 			### give permission to root dir
 			chmod 755 $rootDir
