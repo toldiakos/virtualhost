@@ -142,7 +142,7 @@ if [ "$action" == 'create' ]
 			exit;
 		else
 			### Delete domain in /etc/hosts
-			newhost=${domain//./\\.}
+			newhost=$domain
 			sed -i "/$newhost/d" /etc/hosts
 
 			### Delete domain in /mnt/c/Windows/System32/drivers/etc/hosts (Windows Subsytem for Linux)
