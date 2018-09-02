@@ -131,7 +131,9 @@ if [ "$action" == 'create' ]
 
 		### restart Apache
 		/etc/init.d/apache2 reload
-
+		
+		###Optain cert
+		certbot run -d $domain -d www.$domain --apache
 		### show the finished message
 		echo -e $"Complete! \nYou now have a new Virtual Host \nYour new host is: http://$domain \nAnd its located at $rootDir"
 		exit;
